@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="main.js"></script>
+    <h1>"Rock, Paper, Scissors" game</h1>
+    <div class="select">
+        <h3>Please, choose:</h3>
+        <img data-option="paper" class="first" src="images/paper.jpg" alt="" title="paper">
+        <img data-option="rock" src="images/rock.jpg" alt="" title="rock">
+        <img data-option="scissors" src="images/scissors.jpg" alt="" title="paper">
+    </div>
+
+    <button class="start">Let's play!</button>
+
+    <div class="panel-left">
+        <h3>Game results:</h3>
+        <p>Your choice: <span data-summary="your-choice"></span></p>
+        <p>Computer choice: <span data-summary="ai-choice"></span></p>
+        <h2>Winner: <span data-summary="who-win"></span></h2>
+    </div>
+
+    <div class="panel-right">
+        <h3>Actual results</h3>
+        <p class="numbers">Numbers: <span>0</span></p>
+        <p class="wins">Wins: <span>0</span></p>
+        <p class="losses">Looses: <span>0</span></p>
+        <p class="draws">Draws: <span>0</span></p>
+    </div>
+    <script src="game.js"></script>
 </body>
 </html>
