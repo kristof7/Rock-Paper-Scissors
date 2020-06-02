@@ -42,7 +42,7 @@ function publishResult(player, ai, result) {
 
     document.querySelector("p.numbers span").textContent = ++gameSummary.numbers;
 
-    if(result === "win") {
+    if (result === "win") {
         document.querySelector("p.wins span").textContent = ++gameSummary.wins;
         document.querySelector('[data-summary="who-win"]').textContent = "You win!!!!!";
         document.querySelector('[data-summary="who-win"]').style.color = "green";
@@ -57,12 +57,19 @@ function publishResult(player, ai, result) {
     }
 };
 
+function endGame() {
+    document.querySelector(`[data-option="${game.playerHand}"]`).style.boxShadow = "";
+    game.playerHand = "";
+    game.aiHand = "";
+};
+
 function startGame() {
     if (!game.playerHand) return alert("Choose option!");
     game.aiHand = aiChoice();
     const gameResult = checkResult(game.playerHand, game.aiHand);
     console.log(gameResult);
     publishResult(game.playerHand, game.aiHand, gameResult);
+    endGame();
 };
 
 const start = document.querySelector(".start");
