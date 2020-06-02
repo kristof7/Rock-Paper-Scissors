@@ -3,18 +3,18 @@ const gameSummary = {
     wins: 0,
     losses: 0,
     draws: 0
-}
+};
 
 const game = {
     playerHand: "",
     aiHand: "",
     playerHandHTML: ""
-}
+};
 
 const hands = [...document.querySelectorAll(".select img")];
 
 function handSelection() {
-    game.playerHand = this.dataset.option
+    game.playerHand = this.dataset.option;
     hands.forEach(hand => hand.style.boxShadow = "");
     this.style.boxShadow = "0 0 0 4px yellow";
 };
@@ -22,12 +22,23 @@ function handSelection() {
 hands.forEach(hand => hand.addEventListener("click", handSelection));
 
 function aiChoice() {
-    return hands[Math.floor(Math.random() *3)].dataset.option;
-}
- 
+    return hands[Math.floor(Math.random() * 3)].dataset.option;
+};
+
+function checkResult(player, ai) {
+    if (player === ai) {
+        return "draw";
+    } else if ((player === "paper" && ai === "rock") || (player === "rock" && ai === "scissors") || (player === "scissors" && ai === "paper")) {
+        return "win";
+    } else {
+        return "loss";
+    }
+};
+
 function startGame() {
-    if(!game.playerHand) return alert("Choose option!");
+    if (!game.playerHand) return alert("Choose option!");
     game.aiHand = aiChoice();
+    const gameResult = checkResult(game.playerHand, game.aiHand);
 };
 
 const start = document.querySelector(".start");
