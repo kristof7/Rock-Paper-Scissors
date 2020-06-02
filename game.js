@@ -17,10 +17,18 @@ function handSelection() {
     game.playerHand = this.dataset.option
     hands.forEach(hand => hand.style.boxShadow = "");
     this.style.boxShadow = "0 0 0 4px yellow";
-}
+};
 
 hands.forEach(hand => hand.addEventListener("click", handSelection));
 
+function aiChoice() {
+    return hands[Math.floor(Math.random() *3)].dataset.option;
+}
+ 
+function startGame() {
+    if(!game.playerHand) return alert("Choose option!");
+    game.aiHand = aiChoice();
+};
 
-
-
+const start = document.querySelector(".start");
+start.addEventListener("click", startGame);
